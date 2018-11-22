@@ -1,6 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const Rental = require('../models/rental');
+const UserCrtl = require('../controllers/user');
+
+//UserCrtl.authMiddleware se encarga de hacer la validacion del token, se llama en el 2do parametro. si esta ok sigue con la callback function, sino devuelve error
+router.get('/secret', UserCrtl.authMiddleware, function (err, res) {
+  res.json({"secret":true});
+});
 
 router.get('', function (req, res) {
   Rental.find({}, function (err, foundRentals) {

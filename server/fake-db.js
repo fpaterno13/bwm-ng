@@ -1,4 +1,5 @@
 const Rental = require('./models/rental');
+const User = require('./models/user');
 
 class FakeDb {
   constructor() {
@@ -34,24 +35,38 @@ class FakeDb {
       shared: true,
       description: "Very nice apartment in center of the city.",
       dailyRate: 23
-    }]
+      }];
+
+    this.users = [{
+      username: "Test User",
+      email: "test@gmail.com",
+      password: "testtest"
+    }];
   }
 
-  pushRentalsToDb() {
+  pushDataToDb() {
+    const user = new User(this.users[0]);
+
     this.rentals.forEach((rental) => {
       const newRental = new Rental(rental);
+      newRental.user = user;
+
+      user.rentals.push(newRental);
       newRental.save();
     });
+
+    user.save();
   }
 
-  seedDb() {
+  async seedDb() {
     //primero el clean para no insertar lo mismo dos veces (borra todo) y despues el push. 
-    this.cleanDb();
-    this.pushRentalsToDb();
+    await this.cleanDb();
+    this.pushDataToDb();
   }
 
   //async y await: se encargan de que primero se haga el clean de la BD y despues siga la ejecucion
   async cleanDb() {
+    await User.remove({});
     await Rental.remove({});
   }
 }
