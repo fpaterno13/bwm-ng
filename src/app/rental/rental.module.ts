@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common'; //lo agregue para poder usar el 
 import { Routes, RouterModule } from '@angular/router' //ROUTING: agrego el import
 import { HttpClientModule } from '@angular/common/http' //conexion al node server
 import { NgPipesModule } from 'ngx-pipes' //custom pipes
+import { MapModule } from '../common/map/map.module' //google maps
 
 import { RentalListComponent } from './rental-list/rental-list.component';
 import { RentalListItemComponent } from './rental-list-item/rental-list-item.component';
@@ -39,7 +40,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes), //ROUTING: agrego el import. routes es el nombre de la constante
     HttpClientModule,
-    NgPipesModule
+    NgPipesModule,
+    MapModule
   ], 
   providers: [RentalService]
 })
