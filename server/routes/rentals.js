@@ -4,7 +4,7 @@ const Rental = require('../models/rental');
 const UserCrtl = require('../controllers/user');
 
 //UserCrtl.authMiddleware se encarga de hacer la validacion del token, se llama en el 2do parametro. si esta ok sigue con la callback function, sino devuelve error
-router.get('/secret', UserCrtl.authMiddleware, function (err, res) {
+router.get('/secret', UserCrtl.authMiddleware, function (err, res) { //solo se usa para testing, no se llama nunca 
   res.json({"secret":true});
 });
 
