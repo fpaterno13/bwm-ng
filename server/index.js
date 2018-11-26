@@ -11,7 +11,7 @@ const userRoutes = require('./routes/users');
 //se crea la conexion con la BD y hace el insert 
 mongoose.connect(config.DB_URI).then(() => {
   const fakeDb = new FakeDb();
-  fakeDb.seedDb();
+  //fakeDb.seedDb();
 });
 
 const app = express();
@@ -26,4 +26,4 @@ const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, function(){
   console.log("i am running");
-})
+})  

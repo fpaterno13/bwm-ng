@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/header/header.component';
 import { RentalComponent } from './rental/rental.component';
 
-import { RentalModule } from './rental/rental.module'; //se agrego para evitar agregar en este archivo todos los imports de rental
+import { RentalModule } from './rental/rental.module';//se agrego para evitar agregar en este archivo todos los imports de rental
+import { AuthModule } from './auth/auth.module'; 
 
 //ROUTING: se encarga del routing. en app.component.html esta el <router-outlet> que llama a esta constante y se encarga de todo
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
   imports: [ //cada vez que agregamos un import arriba, lo tenemos que agregar aca
     RouterModule.forRoot(routes), //ROUTING: agrego el import
     BrowserModule,
-    RentalModule
+    RentalModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

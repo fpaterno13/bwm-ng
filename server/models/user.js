@@ -39,7 +39,7 @@ userSchema.pre('save', function (next) {
       user.password = hash;
       next();
     });
-  });
+  });  
 });
 
 module.exports = mongoose.model('User', userSchema);

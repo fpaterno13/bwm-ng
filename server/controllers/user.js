@@ -11,7 +11,7 @@ exports.auth = function (req, res) {
   }
 
   User.findOne({ email }, function (err, user) {
-    if (err) {
+    if (err) { 
       return res.status(422).send({ errors: MongooseHelpers.normalizeErrors(err.errors) });
     }
 
@@ -19,7 +19,7 @@ exports.auth = function (req, res) {
       return res.status(422).send({ errors: [{ title: 'Invalid user!', detail: "User does not exist!" }] });
     }
 
-    if (user.hasSamePassword()) {
+    if (user.hasSamePassword(password)) {
       const token = jwt.sign({
         userId: user.id,
         username: user.username
