@@ -14,7 +14,7 @@ exports.createBooking = function (req, res) {
     if (err) {
       return res.status(422).send({ errors: MongooseHelpers.normalizeErrors(err.errors) });
     }
-
+     
     if (foundRental.user.id === user.id) {
       return res.status(422).send({ errors: [{ title: 'Invalid user!', detail: "Cannot create booking on your rental!" }] }); 
     }
@@ -22,7 +22,7 @@ exports.createBooking = function (req, res) {
     if (isValidBooking(booking, foundRental)) {
       booking.user = user;
       booking.rental = foundRental;
-      foundRental.booking.push(booking);
+      foundRental.bookings.push(booking);   
 
       booking.save(function (err) {
         if (err) {
@@ -30,7 +30,7 @@ exports.createBooking = function (req, res) {
         }
         foundRental.save();
 
-        User.update({ _id: user.id }, { push: { bookigs: booking } }, function () { });
+        User.update({ _id: user.id }, { push: { bookings: booking } }, function () { });
 
         return res.json({ startAt: booking.startAt, endAt: booking.endAt });
       });
@@ -43,8 +43,8 @@ exports.createBooking = function (req, res) {
 function isValidBooking(proposedBooking, rental) {
   let isValid = true;
 
-  if (rental.booking && rental.booking.length > 0) {
-    isValid = rental.booking.every(function (booking) {
+  if (rental.bookings && rental.bookings.length > 0) {
+    isValid = rental.bookings .every(function (booking) {
       const proposedStart = moment(proposedBooking.startAt);
       const proposedEnd = moment(proposedBooking.endAt);
       const actualStart = moment(booking.startAt);
