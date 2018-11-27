@@ -7,8 +7,8 @@ const Rental = require('./models/rental');
 const FakeDb = require('./fake-db');
 const rentalRoutes = require('./routes/rentals');
 const userRoutes = require('./routes/users');
-const bookingRoutes = require('./models/booking');
-
+const bookingRoutes = require('./routes/bookings');
+ 
 //se crea la conexion con la BD y hace el insert 
 mongoose.connect(config.DB_URI).then(() => {
   const fakeDb = new FakeDb();
