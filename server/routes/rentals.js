@@ -22,7 +22,7 @@ router.get('/manage', UserCrtl.authMiddleware, function (req, res) {
   });
 });
 
-router.get('/:id', function (req, res) {
+router.get('/:Id', function (req, res) {
   const rentalId = req.params.Id;
 
   Rental.findById(rentalId).populate('user', 'username -_id').populate('bookings', 'startAt endAt -_id').exec(function (err, foundRental) { //dentro del populate especifico que propiedades quiero, asi no traigo todo

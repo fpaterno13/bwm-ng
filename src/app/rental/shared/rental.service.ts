@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http' //conexion al node server
 @Injectable()
 export class RentalService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
 
   //private rentals: Rental[] = [
@@ -66,7 +66,6 @@ export class RentalService {
   //];
 
   public getRentalById(rentalId: string): Observable<any> {
-
     return this.http.get('/api/v1/rentals/' + rentalId);
 
     //return new Observable((observer) => {
@@ -98,6 +97,14 @@ export class RentalService {
 
   public createRental(rental: Rental): Observable<any> {
     return this.http.post('/api/v1/rentals', rental);
+  }
+
+  public getUserRentals(): Observable<any> {
+    return this.http.get('/api/v1/rentals/manage');
+  }
+
+  public deleteRental(rentalId: string): Observable<any> {
+    return this.http.delete(`/api/v1/rentals/${rentalId}`);
   }
 }
 

@@ -10,7 +10,8 @@ import { HeaderComponent } from './common/header/header.component';
 import { RentalComponent } from './rental/rental.component';
 
 import { RentalModule } from './rental/rental.module';//se agrego para evitar agregar en este archivo todos los imports de rental
-import { AuthModule } from './auth/auth.module'; 
+import { AuthModule } from './auth/auth.module';
+import { ManageModule } from './manage/manage.module';
 
 //ROUTING: se encarga del routing. en app.component.html esta el <router-outlet> que llama a esta constante y se encarga de todo
 const routes: Routes = [
@@ -29,7 +30,8 @@ const routes: Routes = [
     AuthModule,
     NgbModule.forRoot(),
     ToastModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ManageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
