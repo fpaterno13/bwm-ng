@@ -8,6 +8,7 @@ import { BookingService } from '../../../booking/shared/booking.service';
 import { debug } from 'util';
 import { ToastsManager } from 'ng2-toastr';
 import { DaterangePickerComponent } from 'ng2-daterangepicker';
+import { AuthService } from '../../../auth/shared/auth.service';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -35,7 +36,12 @@ export class RentalDetailBookingComponent implements OnInit {
     isInvalidDate: this.checkForInvalidDates.bind(this)
   };
 
-  constructor(private helper: HelperService, private modalService: NgbModal, private bookingService: BookingService, private toastr: ToastsManager, private vcr: ViewContainerRef) {
+  constructor(private helper: HelperService,
+              private modalService: NgbModal,
+              private bookingService: BookingService,
+              private toastr: ToastsManager,
+              private vcr: ViewContainerRef,
+              public auth: AuthService) {
     this.toastr.setRootViewContainerRef(vcr);
   }
 
