@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'variables';
-html, body, p{
+
+html, body, p {
   color: $main-text-color;
 }
 
@@ -12,25 +13,32 @@ html, body, p{
   color: #d68000;
 }
 
-.house{
+.house {
   color: #bf1818;
 }
+
+.page-title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+  
 
 .clickable {
   cursor: pointer;
 }
 
-.btm-bwm{
+.btm-bwm {
   background-color: $main-color;
   border-color: $main-color;
   color: white;
   padding: 15px 30px;
   font-size: 20px !important;
 
-  &:hover, &:focus, &:active{
+  &:hover, &:focus, &:active {
     border-color: $main-color !important;
     background-color: $main-color !important;
-  } 
+  }
 }
 
 .bwm-form {
