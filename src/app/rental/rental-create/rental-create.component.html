@@ -90,8 +90,7 @@
                    class="form-control"
                    id="shared"
                    name="shared"
-                   [(ngModel)]="newRental.shared"
-                   required>
+                   [(ngModel)]="newRental.shared">
           </div>
           <button type="button" (click)="createRental()" [disabled]="!rentalForm.form.valid" class="btn btn-bwm">Submit</button>
         </form>
